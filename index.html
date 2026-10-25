@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charlie Electronics Website Offer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow column. A sticky total on top, big tappable choices with prices, one send button at the end. */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#0d1626; --muted:#566379; --line:#d7dde7;
+  --accent:#0b72ad; --accent-ink:#ffffff; --sel:#e6f2fa;
+  --wa:#168a48; --wa-ink:#ffffff; --off:#c9d0dc; --off-ink:#566379;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a101b; --surface:#121b2b; --ink:#eaf0f8; --muted:#9aa8bf; --line:#243249;
+    --accent:#3ec1ff; --accent-ink:#021522; --sel:#12304a; --wa:#25d366; --wa-ink:#052e16;
+    --off:#243249; --off-ink:#9aa8bf; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a101b; --surface:#121b2b; --ink:#eaf0f8; --muted:#9aa8bf; --line:#243249;
+  --accent:#3ec1ff; --accent-ink:#021522; --sel:#12304a; --wa:#25d366; --wa-ink:#052e16;
+  --off:#243249; --off-ink:#9aa8bf; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.5;
+  padding-bottom:56px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+.bar{
+  position:sticky; top:0; z-index:5; margin:0 calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding:10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));
+  background:var(--surface); border-bottom:1.5px solid var(--line);
+}
+.bar-in{max-width:620px; margin:0 auto; display:flex; justify-content:space-between; align-items:baseline; gap:12px}
+.bar small{color:var(--muted); font-size:13px}
+.bar b{font-family:var(--display); font-weight:800; font-size:26px; font-variant-numeric:tabular-nums}
+.wrap{max-width:620px; margin:0 auto; padding-top:26px; display:flex; flex-direction:column; gap:28px}
+.eyebrow{font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+h1{font-family:var(--display); font-weight:800; font-size:clamp(30px,8vw,42px); line-height:1.08; margin:8px 0 12px; text-wrap:balance}
+.lead{margin:0 0 14px; color:var(--muted); max-width:52ch}
+.base{border:1.5px solid var(--line); background:var(--surface); border-radius:10px; padding:16px}
+.base h2{font-family:var(--display); font-weight:600; font-size:19px; margin:0 0 4px; display:flex; justify-content:space-between; gap:12px}
+.base ul{margin:8px 0 0; padding:0; list-style:none}
+.base li{padding:5px 0 5px 24px; position:relative; font-size:15px}
+.base li::before{content:""; position:absolute; left:3px; top:12px; width:10px; height:6px; border-left:2.5px solid var(--accent); border-bottom:2.5px solid var(--accent); transform:rotate(-45deg)}
+fieldset{border:0; margin:0; padding:0; min-width:0; display:flex; flex-direction:column; gap:10px}
+legend{padding:0; margin-bottom:10px}
+.qn{display:block; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.qt{display:block; font-family:var(--display); font-weight:600; font-size:21px; line-height:1.2; margin-top:2px; text-wrap:balance}
+.opt{
+  position:relative; display:grid; grid-template-columns:34px 1fr auto; gap:12px; align-items:start;
+  padding:14px; border:1.5px solid var(--line); border-radius:10px; background:var(--surface); cursor:pointer;
+}
+.opt input{position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer}
+.badge{
+  width:34px; height:34px; border-radius:6px; border:1.5px solid var(--line); display:grid; place-items:center;
+  font-family:var(--display); font-weight:800; font-size:16px; color:var(--muted);
+}
+.opt:has(input:checked){border-color:var(--accent); background:var(--sel)}
+.opt:has(input:checked) .badge{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.opt:has(input:focus-visible){outline:3px solid var(--accent); outline-offset:2px}
+.body{min-width:0}
+.name{display:block; font-weight:600}
+.desc{display:block; color:var(--muted); font-size:15px; margin-top:2px}
+.cost{font-family:var(--display); font-weight:800; font-size:17px; white-space:nowrap; font-variant-numeric:tabular-nums; padding-top:5px}
+.cost.free{font-family:var(--body); font-weight:600; font-size:14px; color:var(--muted)}
+.send{border-top:1.5px solid var(--line); padding-top:24px; display:flex; flex-direction:column; gap:14px}
+.send h2{font-family:var(--display); font-weight:800; font-size:24px; margin:0}
+.sum{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+.sum li{display:flex; gap:12px; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line); min-width:0}
+.sum li span:first-child{color:var(--muted); flex:none}
+.sum li span:last-child{text-align:right; font-weight:600; overflow-wrap:anywhere}
+.sum .none{color:var(--muted); font-weight:400}
+.sum .tot{border-bottom:0; padding-top:14px; font-family:var(--display); font-size:20px}
+.sum .tot span:first-child{color:var(--ink); font-weight:800}
+.pay{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.pay div{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px; min-width:0}
+.pay b{display:block; font-family:var(--display); font-size:22px; font-variant-numeric:tabular-nums}
+.pay span{font-size:14px; color:var(--muted)}
+.go{
+  display:flex; justify-content:center; text-align:center; padding:16px 18px; border-radius:10px; text-decoration:none;
+  font-weight:600; font-size:17px; background:var(--wa); color:var(--wa-ink);
+}
+.go[aria-disabled="true"]{background:var(--off); color:var(--off-ink); cursor:not-allowed}
+.go:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+.note{margin:0; font-size:14px; color:var(--muted)}
+@media (prefers-reduced-motion: no-preference){ .opt,.badge{transition:background-color .15s, border-color .15s} }
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-in"><small id="barnote">Starting price</small><b id="bartotal">$300</b></div></div>
+
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Charlie Electronics &middot; Website offer</div>
+    <h1>Choose your options and see the price</h1>
+    <p class="lead">Every price is final. The total at the top updates as you tap. At the end, one button sends your choices and total to Ricky on WhatsApp.</p>
+    <div class="base">
+      <h2><span>The website, always included</span><span id="basecost">$300</span></h2>
+      <ul>
+        <li>Home page, all your products in categories, search and price sorting</li>
+        <li>Made for phones, with a WhatsApp button on every screen</li>
+        <li>Your numbers, address, map, TikTok and Facebook links</li>
+        <li>Free hosting, two rounds of changes, 30 days of free fixes</li>
+        <li>A written guide and one 30 minute training session</li>
+      </ul>
+    </div>
+  </header>
+
+  <form id="form" autocomplete="off"></form>
+
+  <section class="send" aria-live="polite">
+    <h2>Your choices</h2>
+    <ul class="sum" id="sum"></ul>
+    <div class="pay">
+      <div><b id="half1">$0</b><span>to start the work</span></div>
+      <div><b id="half2">$0</b><span>before the website goes live</span></div>
+    </div>
+    <a class="go" id="go" href="#" target="_blank" rel="noopener" aria-disabled="true">Answer all questions to continue</a>
+    <p class="note">Tapping the button opens WhatsApp with your choices and total ready to send. Press send there. Ricky will reply with how to make the first payment.</p>
+  </section>
+</main>
+
+<script>
+/* Edit prices here. Set an option's price to 0 to show it as included. */
+var NUMBER = "231555112922";
+var BASE = 300;
+var QUESTIONS = [
+  { label: "Ordering", title: "How should customers order?", options: [
+    { name: "One product at a time on WhatsApp", desc: "The customer taps Order on a product and a message about it opens in WhatsApp.", price: 0 },
+    { name: "A cart that sends the whole order", desc: "Customers add several items to a cart, then send the full list and total to you in one WhatsApp message.", price: 100 }
+  ]},
+  { label: "Updates", title: "Who updates products and prices?", options: [
+    { name: "You send me the changes", desc: "Send new items, photos and prices on WhatsApp and Ricky updates the site. Free for 30 days after launch, then $15 a month if you want it to continue.", price: 0 },
+    { name: "An admin page for you", desc: "A private page with a login where you add, change and remove products, prices and photos yourself from your phone. No monthly fee.", price: 150 }
+  ]},
+  { label: "Delivery", title: "How should delivery work?", options: [
+    { name: "Show that delivery is available", desc: "Customers arrange delivery with you by WhatsApp or phone.", price: 0 },
+    { name: "Delivery fee by area", desc: "The customer picks their area and the delivery fee is added to the order.", price: 50 }
+  ]},
+  { label: "Web address", title: "What website address do you want?", options: [
+    { name: "Free address", desc: "Something like charlieelectronics.github.io.", price: 0 },
+    { name: "Your own .com address", desc: "Easier to remember and more professional, for example charlieelectronics.com. First year paid and set up for you. Renewal is about $10 to $15 a year.", price: 30 }
+  ]},
+  { label: "Photos", title: "Where do the product photos come from?", options: [
+    { name: "You send me clear photos", desc: "Best quality. Ricky puts the right photo on every product.", price: 0 },
+    { name: "Ricky prepares them from your pages", desc: "Ricky collects photos from your Facebook and TikTok, then crops and sizes them. Quality can vary.", price: 40 }
+  ]}
+];
+var LETTERS = ["A", "B"];
+var picks = [null, null, null, null, null];
+
+function money(n) { return "$" + n; }
+function cost(p) { return p === 0 ? '<span class="cost free">Included</span>' : '<span class="cost">+' + money(p) + "</span>"; }
+
+function buildForm() {
+  var html = "";
+  QUESTIONS.forEach(function (q, i) {
+    html += '<fieldset><legend><span class="qn">Question ' + (i + 1) + " of " + QUESTIONS.length + '</span><span class="qt">' + q.title + "</span></legend>";
+    q.options.forEach(function (o, j) {
+      var id = "q" + i + "o" + j;
+      html += '<label class="opt" for="' + id + '"><input type="radio" id="' + id + '" name="q' + i + '" value="' + j + '">' +
+        '<span class="badge" aria-hidden="true">' + LETTERS[j] + "</span>" +
+        '<span class="body"><span class="name">' + o.name + '</span><span class="desc">' + o.desc + "</span></span>" +
+        cost(o.price) + "</label>";
+    });
+    html += "</fieldset>";
+  });
+  document.getElementById("form").innerHTML = html;
+}
+
+function total() {
+  var t = BASE;
+  picks.forEach(function (v, i) { if (v !== null) t += QUESTIONS[i].options[v].price; });
+  return t;
+}
+
+function buildMessage(t, h1, h2) {
+  var lines = ["Hello Ricky, these are my choices for the Charlie Electronics website:", "", "Website (always included): " + money(BASE)];
+  var code = [];
+  QUESTIONS.forEach(function (q, i) {
+    var o = q.options[picks[i]];
+    lines.push((i + 1) + ". " + q.label + ": " + o.name + (o.price ? " (+" + money(o.price) + ")" : " (included)"));
+    code.push((i + 1) + LETTERS[picks[i]]);
+  });
+  lines.push("", "Total: " + money(t), "To start: " + money(h1) + ", before it goes live: " + money(h2), "", "Code: " + code.join(" "), "", "I agree to this price. Please tell me how to make the first payment.");
+  return lines.join("\n");
+}
+
+function update() {
+  var t = total(), h1 = Math.round(t / 2), h2 = t - h1, left = 0, rows = "";
+  QUESTIONS.forEach(function (q, i) {
+    var v = picks[i];
+    if (v === null) left++;
+    rows += "<li><span>" + q.label + "</span><span" + (v === null ? ' class="none"' : "") + ">" +
+      (v === null ? "Not chosen yet" : LETTERS[v] + ". " + q.options[v].name + (q.options[v].price ? " (+" + money(q.options[v].price) + ")" : "")) + "</span></li>";
+  });
+  rows += '<li class="tot"><span>Total</span><span>' + money(t) + "</span></li>";
+  document.getElementById("sum").innerHTML = rows;
+  document.getElementById("half1").textContent = money(h1);
+  document.getElementById("half2").textContent = money(h2);
+  document.getElementById("bartotal").textContent = money(t);
+  document.getElementById("barnote").textContent = left === 0 ? "Your total" : (left === QUESTIONS.length ? "Starting price" : "Total so far, " + left + " to answer");
+  var go = document.getElementById("go");
+  if (left === 0) {
+    go.setAttribute("aria-disabled", "false");
+    go.textContent = "Send my choices and total on WhatsApp";
+    go.href = "https://wa.me/" + NUMBER + "?text=" + encodeURIComponent(buildMessage(t, h1, h2));
+  } else {
+    go.setAttribute("aria-disabled", "true");
+    go.textContent = left === 1 ? "1 question left to answer" : left + " questions left to answer";
+    go.href = "#";
+  }
+}
+
+document.getElementById("basecost").textContent = money(BASE);
+document.getElementById("form").addEventListener("change", function (e) {
+  var t = e.target;
+  if (t && t.type === "radio") { picks[Number(t.name.slice(1))] = Number(t.value); update(); }
+});
+document.getElementById("go").addEventListener("click", function (e) {
+  if (this.getAttribute("aria-disabled") === "true") e.preventDefault();
+});
+
+buildForm();
+update();
+</script>
+</body>
+</html>
