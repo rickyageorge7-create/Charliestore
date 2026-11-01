@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liberia Tech Market</title>
+    <meta name="description" content="Professional electronics store for Liberia" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="announcement-bar">
+      <span>Free nationwide delivery on orders over $250</span>
+      <span>Orange Money, Visa & Mastercard accepted</span>
+    </div>
+
+    <header class="topbar">
+      <div class="nav-brand">
+        <div class="brand-mark">LT</div>
+        <div>
+          <strong>Liberia Tech</strong>
+          <span>Market</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Products</a>
+        <a href="#checkout">Checkout</a>
+      </nav>
+
+      <div class="search-wrap">
+        <input id="searchInput" type="search" placeholder="Search phones, laptops, accessories..." />
+      </div>
+
+      <div class="nav-actions">
+        <button id="authButton" class="ghost-button">Login</button>
+        <button id="cartButton" class="primary-button" aria-label="View cart">
+          Cart <span id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Liberian market electronics</span>
+          <h1>Premium gadgets for everyday life.</h1>
+          <p>
+            Shop trusted smartphones, laptops, gaming gear, accessories, and everyday tech with fast delivery across Liberia.
+          </p>
+          <div class="hero-actions">
+            <a href="#products" class="primary-button">Shop now</a>
+            <a href="#categories" class="secondary-button">Explore deals</a>
+          </div>
+          <div class="hero-metrics">
+            <div><strong>5000+</strong><span>orders delivered</span></div>
+            <div><strong>48 hrs</strong><span>fast dispatch</span></div>
+            <div><strong>4.9/5</strong><span>customer rating</span></div>
+          </div>
+        </div>
+
+        <div class="hero-showcase">
+          <div class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" alt="Premium smartphone" />
+          </div>
+          <div class="floating-card phone-card">
+            <span>Hot deal</span>
+            <strong>iPhone 16 Pro</strong>
+            <small>From $4,100</small>
+          </div>
+          <div class="floating-card laptop-card">
+            <span>Best seller</span>
+            <strong>MacBook Air</strong>
+            <small>From $3,250</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-strip">
+        <div class="feature-item">
+          <span>🚚</span>
+          <div>
+            <strong>Free delivery</strong>
+            <small>Monrovia & nearby areas</small>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span>🛡️</span>
+          <div>
+            <strong>Official warranty</strong>
+            <small>On selected devices</small>
+          </div>
+        </div>
+        <div class="feature-item">
+          <span>💳</span>
+          <div>
+            <strong>Secure payment</strong>
+            <small>Orange Money & cards</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="promo-grid">
+        <article class="promo-card promo-highlight">
+          <div>
+            <span class="eyebrow small-eyebrow">New arrivals</span>
+            <h3>Latest Apple & Samsung</h3>
+            <p>Premium smartphones, tablets and smart wearables built for modern Liberian lifestyles.</p>
+            <a href="#products" class="link-button">Shop collection</a>
+          </div>
+          <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=900&q=80" alt="Latest smartphones" />
+        </article>
+
+        <article class="promo-card">
+          <span class="eyebrow small-eyebrow">Top picks</span>
+          <h3>Gaming gear</h3>
+          <p>Play at peak performance with PS5, Xbox, accessories and more.</p>
+          <a href="#categories" class="link-button">View deals</a>
+        </article>
+
+        <article class="promo-card">
+          <span class="eyebrow small-eyebrow">Work smarter</span>
+          <h3>Business tech</h3>
+          <p>Power your workspace with premium laptops, tablets and accessories.</p>
+          <a href="#products" class="link-button">Explore tech</a>
+        </article>
+      </section>
+
+      <section class="brands-strip" aria-label="Popular brands">
+        <span>Apple</span>
+        <span>Samsung</span>
+        <span>Google</span>
+        <span>Microsoft</span>
+        <span>PlayStation</span>
+        <span>Asus</span>
+        <span>Lenovo</span>
+      </section>
+
+      <section class="category-shell" id="categories">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Browse by category</span>
+            <h2>Find exactly what you need</h2>
+          </div>
+        </div>
+        <div id="categoryList" class="category-list"></div>
+      </section>
+
+      <section class="products-shell" id="products">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Featured products</span>
+            <h2>Popular electronics</h2>
+          </div>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+      </section>
+
+      <section class="checkout-shell" id="checkout">
+        <div class="checkout-layout">
+          <div class="checkout-panel">
+            <h3>Checkout</h3>
+            <form id="checkoutForm" class="checkout-form">
+              <div class="form-row two-col">
+                <label>
+                  Full name
+                  <input name="name" type="text" placeholder="Your full name" required />
+                </label>
+                <label>
+                  Phone number
+                  <input name="phone" type="tel" placeholder="+231 ..." required />
+                </label>
+              </div>
+
+              <label>
+                Delivery address
+                <input name="address" type="text" placeholder="Street address" required />
+              </label>
+
+              <div class="form-row two-col">
+                <label>
+                  County
+                  <select name="county" required>
+                    <option value="Monrovia">Monrovia</option>
+                    <option value="Paynesville">Paynesville</option>
+                    <option value="Brewerville">Brewerville</option>
+                    <option value="Montserrado County">Montserrado County</option>
+                    <option value="Bomi County">Bomi County</option>
+                    <option value="Margibi County">Margibi County</option>
+                    <option value="Nimba County">Nimba County</option>
+                    <option value="Grand Bassa County">Grand Bassa County</option>
+                    <option value="Grand Cape Mount County">Grand Cape Mount County</option>
+                    <option value="Lofa County">Lofa County</option>
+                    <option value="Maryland County">Maryland County</option>
+                  </select>
+                </label>
+                <label>
+                  Payment method
+                  <select name="paymentMethod" required>
+                    <option value="orange_money">Orange Money</option>
+                    <option value="card">Visa / Mastercard</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Discount code (optional)
+                <input name="discountCode" type="text" placeholder="SAVE10" />
+              </label>
+
+              <button type="submit" class="primary-button full-width">Place order</button>
+            </form>
+          </div>
+
+          <aside class="summary-panel">
+            <h3>Order summary</h3>
+            <div id="checkoutSummary" class="summary-items"></div>
+            <div class="summary-totals">
+              <div><span>Subtotal</span><strong id="subtotalValue">$0.00</strong></div>
+              <div><span>Delivery</span><strong id="shippingValue">$0.00</strong></div>
+              <div><span>Discount</span><strong id="discountValue">$0.00</strong></div>
+              <div class="grand-total"><span>Total</span><strong id="totalValue">$0.00</strong></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="adminPanel" class="admin-shell hidden">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Admin dashboard</span>
+            <h2>Business overview</h2>
+          </div>
+        </div>
+        <div class="admin-stats" id="adminStats"></div>
+        <div class="admin-content">
+          <div class="admin-card wide">
+            <h3>Add a product</h3>
+            <form id="productForm" class="product-form">
+              <div class="form-row two-col">
+                <label>Name<input name="name" required /></label>
+                <label>Brand<input name="brand" /></label>
+              </div>
+              <div class="form-row two-col">
+                <label>Category<select name="category" required>
+                  <option value="Smartphones">Smartphones</option>
+                  <option value="Laptops & Computers">Laptops & Computers</option>
+                  <option value="Tablets & iPads">Tablets & iPads</option>
+                  <option value="Gaming Consoles">Gaming Consoles</option>
+                  <option value="Gaming Accessories">Gaming Accessories</option>
+                  <option value="Headphones & Earbuds">Headphones & Earbuds</option>
+                  <option value="Smartwatches">Smartwatches</option>
+                  <option value="Phone Accessories">Phone Accessories</option>
+                  <option value="Computer Accessories">Computer Accessories</option>
+                  <option value="Other Electronics">Other Electronics</option>
+                </select></label>
+                <label>Condition<select name="condition"><option>New</option><option>Used</option></select></label>
+              </div>
+              <label>Description<textarea name="description" rows="3"></textarea></label>
+              <div class="form-row three-col">
+                <label>Sell price<input name="price" type="number" min="0" required /></label>
+                <label>Original price<input name="original_price" type="number" min="0" /></label>
+                <label>Stock<input name="stock" type="number" min="0" required /></label>
+              </div>
+              <label>Image URLs<textarea name="image_urls" rows="2" placeholder="One URL per line"></textarea></label>
+              <button type="submit" class="primary-button">Save product</button>
+            </form>
+          </div>
+          <div class="admin-card">
+            <h3>Manage products</h3>
+            <div class="admin-product-tools">
+              <input id="adminProductSearch" type="search" placeholder="Search products" />
+              <select id="adminProductCategory">
+                <option value="all">All categories</option>
+                <option value="Smartphones">Smartphones</option>
+                <option value="Laptops & Computers">Laptops & Computers</option>
+                <option value="Tablets & iPads">Tablets & iPads</option>
+                <option value="Gaming Consoles">Gaming Consoles</option>
+                <option value="Gaming Accessories">Gaming Accessories</option>
+                <option value="Headphones & Earbuds">Headphones & Earbuds</option>
+                <option value="Smartwatches">Smartwatches</option>
+                <option value="Phone Accessories">Phone Accessories</option>
+                <option value="Computer Accessories">Computer Accessories</option>
+                <option value="Other Electronics">Other Electronics</option>
+              </select>
+            </div>
+            <div id="adminProductTable" class="admin-product-table"></div>
+          </div>
+          <div class="admin-card">
+            <h3>Orders</h3>
+            <div id="adminOrders" class="mini-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="adminProductModal" class="modal hidden">
+        <div class="modal-card admin-edit-card">
+          <button id="closeAdminProductModal" class="icon-button">×</button>
+          <h3>Edit product</h3>
+          <form id="adminProductForm" class="product-form">
+            <input type="hidden" name="id" />
+            <div class="form-row two-col">
+              <label>Name<input name="name" required /></label>
+              <label>Brand<input name="brand" /></label>
+            </div>
+            <div class="form-row two-col">
+              <label>Category<select name="category" required>
+                <option value="Smartphones">Smartphones</option>
+                <option value="Laptops & Computers">Laptops & Computers</option>
+                <option value="Tablets & iPads">Tablets & iPads</option>
+                <option value="Gaming Consoles">Gaming Consoles</option>
+                <option value="Gaming Accessories">Gaming Accessories</option>
+                <option value="Headphones & Earbuds">Headphones & Earbuds</option>
+                <option value="Smartwatches">Smartwatches</option>
+                <option value="Phone Accessories">Phone Accessories</option>
+                <option value="Computer Accessories">Computer Accessories</option>
+                <option value="Other Electronics">Other Electronics</option>
+              </select></label>
+              <label>Condition<select name="condition"><option>New</option><option>Used</option></select></label>
+            </div>
+            <label>Description<textarea name="description" rows="3"></textarea></label>
+            <div class="form-row three-col">
+              <label>Sell price<input name="price" type="number" min="0" required /></label>
+              <label>Original price<input name="original_price" type="number" min="0" /></label>
+              <label>Stock<input name="stock" type="number" min="0" required /></label>
+            </div>
+            <label>Image URLs<textarea name="image_urls" rows="2" placeholder="One URL per line"></textarea></label>
+            <button type="submit" class="primary-button">Save changes</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="adminProductDeleteConfirm" class="modal hidden">
+        <div class="modal-card confirm-card">
+          <h3>Delete product</h3>
+          <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+          <div class="confirm-actions">
+            <button id="cancelDeleteProduct" class="secondary-button">Cancel</button>
+            <button id="confirmDeleteProduct" class="danger-button">Delete</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside id="cartDrawer" class="cart-drawer hidden">
+      <div class="cart-header">
+        <h3>Your cart</h3>
+        <button id="closeCart" class="icon-button">×</button>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="grand-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+        <button id="checkoutScrollButton" class="primary-button full-width">Proceed to checkout</button>
+      </div>
+    </aside>
+
+    <div id="authModal" class="modal hidden">
+      <div class="modal-card">
+        <button id="closeAuth" class="icon-button">×</button>
+        <div class="auth-tabs">
+          <button class="tab active" data-tab="login">Login</button>
+          <button class="tab" data-tab="register">Register</button>
+        </div>
+
+        <form id="loginForm" class="auth-form active">
+          <label>Email<input name="email" type="email" required /></label>
+          <label>Password<input name="password" type="password" required /></label>
+          <button type="submit" class="primary-button full-width">Login</button>
+        </form>
+
+        <form id="registerForm" class="auth-form">
+          <label>Name<input name="name" type="text" required /></label>
+          <label>Email<input name="email" type="email" required /></label>
+          <label>Phone<input name="phone" type="tel" /></label>
+          <label>Password<input name="password" type="password" required /></label>
+          <button type="submit" class="primary-button full-width">Create account</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

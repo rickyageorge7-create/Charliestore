@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="announcement-bar"><span>Admin dashboard</span></div>
+    <header class="topbar">
+      <div class="nav-brand"><div class="brand-mark">LT</div><div><strong>Liberia Tech</strong><span>Market</span></div></div>
+      <nav class="nav-links">
+        <a href="./index.html">Home</a>
+        <a href="./sell.html">Sell</a>
+        <a href="./admin.html">Admin</a>
+      </nav>
+    </header>
+    <main style="padding: 48px 20px 80px; max-width: 900px; margin: 0 auto;">
+      <section class="admin-card" style="padding:24px; border-radius:20px;">
+        <span class="eyebrow">Business overview</span>
+        <h1 style="margin-top:10px;">Product management</h1>
+        <form id="productForm" class="product-form" style="margin-top:18px;">
+          <div class="form-row two-col">
+            <label>Name<input name="name" placeholder="iPhone 16 Pro" required /></label>
+            <label>Brand<input name="brand" placeholder="Apple" /></label>
+          </div>
+          <div class="form-row two-col">
+            <label>Category<select name="category"><option>Smartphones</option><option>Laptops & Computers</option><option>Tablets & iPads</option><option>Gaming Consoles</option><option>Gaming Accessories</option><option>Headphones & Earbuds</option><option>Smartwatches</option><option>Phone Accessories</option><option>Computer Accessories</option><option>Other Electronics</option></select></label>
+            <label>Condition<select name="condition"><option>New</option><option>Used</option></select></label>
+          </div>
+          <label>Description<textarea name="description" rows="3" placeholder="Describe the product"></textarea></label>
+          <div class="form-row three-col">
+            <label>Sell price<input name="price" type="number" min="0" required /></label>
+            <label>Original price<input name="original_price" type="number" min="0" /></label>
+            <label>Stock<input name="stock" type="number" min="0" required /></label>
+          </div>
+          <button type="submit" class="primary-button">Save product</button>
+        </form>
+      </section>
+    </main>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
